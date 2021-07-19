@@ -1,9 +1,14 @@
+import { Post, Route, Body } from "@tsoa/runtime";
+
+@Route("accounts")
 export default class AccountController {
-  withdraw(body: any) {
+  @Post("/withdraw")
+  withdraw(@Body() body: any) {
     throw new Error("Method not implemented.");
   }
 
-  deposit(body: any) {
+  @Post("/deposit")
+  deposit(@Body() body: any) {
     throw new Error("Method not implemented.");
   }
 }

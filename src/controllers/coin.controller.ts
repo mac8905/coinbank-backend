@@ -1,9 +1,14 @@
+import { Get, Route, Path } from "@tsoa/runtime";
+
+@Route("coins")
 export default class CoinController {
-  getById(coinId: string) {
+  @Get()
+  getAll() {
     throw new Error("Method not implemented.");
   }
 
-  getAll() {
+  @Get(":coinId")
+  getById(@Path() coinId: string) {
     throw new Error("Method not implemented.");
   }
 }

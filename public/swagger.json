@@ -1,0 +1,103 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {},
+		"securitySchemes": {}
+	},
+	"info": {
+		"title": "coinbank-backend",
+		"version": "1.0.0",
+		"description": "Server to mock a cryptocurrency bank",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {
+			"name": "mac8905"
+		}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/coins": {
+			"get": {
+				"operationId": "GetAll",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/coins/{coinId}": {
+			"get": {
+				"operationId": "GetById",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "coinId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/accounts/withdraw": {
+			"post": {
+				"operationId": "Withdraw",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/accounts/deposit": {
+			"post": {
+				"operationId": "Deposit",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
