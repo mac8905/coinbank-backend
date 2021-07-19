@@ -1,10 +1,11 @@
-import express, { Application, Request, Response } from "express";
+import express, { Application } from "express";
+import morgan from "morgan";
+import routes from "./routes";
 
 const app: Application = express();
 
-app.get("/ping", (_req: Request, res: Response) => {
-  res.send({ message: "pong" });
-});
+app.use(morgan("tiny"));
+app.use(routes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT);
