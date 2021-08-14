@@ -1,14 +1,15 @@
 import { Get, Route, Path } from "@tsoa/runtime";
+import { db } from "../config";
 
 @Route("coins")
 export default class CoinController {
   @Get()
   getAll() {
-    throw new Error("Method not implemented.");
+    return [{ message: db.host }];
   }
 
   @Get(":coinId")
   getById(@Path() coinId: string) {
-    throw new Error("Method not implemented.");
+    return { message: coinId };
   }
 }

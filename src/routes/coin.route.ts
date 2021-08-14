@@ -6,13 +6,13 @@ const coinsRoute = Router();
 coinsRoute.get("/", async (_req: Request, res: Response) => {
   const controller = new CoinController();
   const response = await controller.getAll();
-  return res.send(response);
+  return res.json(response);
 });
 
-coinsRoute.get("/coinId", async (req: Request, res: Response) => {
+coinsRoute.get("/:coinId", async (req: Request, res: Response) => {
   const controller = new CoinController();
   const response = await controller.getById(req.params.coinId);
-  return res.send(response);
+  return res.json(response);
 });
 
 export default coinsRoute;
