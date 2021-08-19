@@ -29,20 +29,7 @@
 						"description": "Ok",
 						"content": {
 							"application/json": {
-								"schema": {
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								}
+								"schema": {}
 							}
 						}
 					}
@@ -59,17 +46,7 @@
 						"description": "Ok",
 						"content": {
 							"application/json": {
-								"schema": {
-									"properties": {
-										"message": {
-											"type": "string"
-										}
-									},
-									"required": [
-										"message"
-									],
-									"type": "object"
-								}
+								"schema": {}
 							}
 						}
 					}
@@ -87,9 +64,9 @@
 				]
 			}
 		},
-		"/accounts/withdraw": {
+		"/accounts/withdrawal": {
 			"post": {
-				"operationId": "Withdraw",
+				"operationId": "Withdrawal",
 				"responses": {
 					"204": {
 						"description": "No content"
