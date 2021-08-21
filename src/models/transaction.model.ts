@@ -1,6 +1,7 @@
 import { Schema, model } from "mongoose";
+import { ITransaction } from "../interfaces";
 
-enum TransationType {
+enum TransactionType {
   DEPOSIT = "deposit",
   WITHDRAWAL = "withdrawal",
 }
@@ -12,7 +13,7 @@ const schema = new Schema({
   },
   type: {
     type: String,
-    enum: Object.values(TransationType),
+    enum: Object.values(TransactionType),
     required: true,
   },
   emailAddress: {
@@ -29,6 +30,6 @@ const schema = new Schema({
   },
 });
 
-const Transation = model("transactions", schema);
+model<ITransaction>("transactions", schema);
 
-export { Transation, TransationType };
+export { TransactionType };

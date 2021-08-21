@@ -1,14 +1,22 @@
-import { Post, Route, Body } from "@tsoa/runtime";
+import { AccountService } from "../services";
+import { ITransaction } from "../interfaces";
 
-@Route("accounts")
 export default class AccountController {
-  @Post("/withdrawal")
-  withdrawal(@Body() body: any) {
-    throw new Error("Method not implemented.");
+  private accountService: AccountService;
+
+  constructor() {
+    this.accountService = new AccountService();
   }
 
-  @Post("/deposit")
-  deposit(@Body() body: any) {
-    throw new Error("Method not implemented.");
+  async withdrawal(transaction: ITransaction) {
+    try {
+      return await this.accountService.withdrawal(transaction);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  async deposit(transaction: ITransaction) {
+    return await this.accountService.deposit(transaction);
   }
 }
