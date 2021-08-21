@@ -1,4 +1,4 @@
-import { TransactionType } from "../models";
+import { TransactionType } from "../config";
 
 export interface ITransaction {
   coinSymbol: string;

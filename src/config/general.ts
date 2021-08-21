@@ -2,15 +2,23 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const coingecko = {
+export const coingecko = {
   coins: "https://api.coingecko.com/api/v3/coins",
 };
 
-const db = {
+export const db = {
   host: process.env.DB_HOST ?? "",
   name: process.env.BD_NAME ?? "",
 };
 
-const PORT = process.env.PORT || 3000;
+export const PORT = process.env.PORT || 3000;
 
-export { db, PORT, coingecko };
+export const enum TransactionType {
+  DEPOSIT = "deposit",
+  WITHDRAWAL = "withdrawal",
+}
+
+export const enum Collections {
+  BALANCES = "balances",
+  TRANSACTIONS = "transactions",
+}

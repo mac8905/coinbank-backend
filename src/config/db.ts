@@ -1,7 +1,7 @@
 import { connect } from "mongoose";
 import { db } from "./general";
 
-const connectDB = async () => {
+export const connectDB = async () => {
   try {
     await connect(db.host, {
       useNewUrlParser: true,
@@ -14,5 +14,3 @@ const connectDB = async () => {
     process.exit(1);
   }
 };
-
-export { connectDB };

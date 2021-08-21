@@ -1,8 +1,11 @@
 import { model } from "mongoose";
-import { TransactionType } from "../models";
+import "../models/transaction.model";
+import "../models/balance.model";
+import { Collections } from "../config";
 import { ITransaction } from "../interfaces";
 
-const Transaction = model<ITransaction>("transactions");
+const TransactionModel = model<ITransaction>(Collections.TRANSACTIONS);
+const BalanceModel = model<ITransaction>(Collections.BALANCES);
 
 export class AccountService {
   private currentDate: Date;
@@ -13,8 +16,8 @@ export class AccountService {
 
   async withdrawal(transaction: ITransaction) {
     try {
-      const tx = new Transaction(this.populateTransaction(transaction));
-      return await tx.save();
+      const document = new TransactionModel(this.fillTransaction(transaction));
+      return await document.save();
     } catch (error) {
       throw new Error(error?.message);
     }
@@ -22,18 +25,14 @@ export class AccountService {
 
   async deposit(transaction: ITransaction) {
     try {
-      const tx = new Transaction(this.populateTransaction(transaction));
-      return await tx.save();
+      const document = new TransactionModel(this.fillTransaction(transaction));
+      return await document.save();
     } catch (error) {
       throw new Error(error?.message);
     }
   }
 
-  populateTransaction(transaction: ITransaction): ITransaction {
-    if (transaction.type === TransactionType.WITHDRAWAL) {
-      transaction.numberOfCoins *= -1;
-    }
-
+  fillTransaction(transaction: ITransaction): ITransaction {
     transaction.createdAt = this.currentDate;
     return transaction;
   }

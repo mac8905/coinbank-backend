@@ -1,10 +1,6 @@
 import { Schema, model } from "mongoose";
 import { ITransaction } from "../interfaces";
-
-enum TransactionType {
-  DEPOSIT = "deposit",
-  WITHDRAWAL = "withdrawal",
-}
+import { TransactionType, Collections } from "../config";
 
 const schema = new Schema({
   coinSymbol: {
@@ -13,7 +9,7 @@ const schema = new Schema({
   },
   type: {
     type: String,
-    enum: Object.values(TransactionType),
+    enum: [TransactionType.DEPOSIT, TransactionType.WITHDRAWAL],
     required: true,
   },
   emailAddress: {
@@ -30,6 +26,4 @@ const schema = new Schema({
   },
 });
 
-model<ITransaction>("transactions", schema);
-
-export { TransactionType };
+model<ITransaction>(Collections.TRANSACTIONS, schema);

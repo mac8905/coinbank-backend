@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 import { IBalance } from "../interfaces";
+import { Collections } from "../config";
 
 const schema = new Schema({
   coinSymbol: {
@@ -25,6 +26,4 @@ const schema = new Schema({
   },
 });
 
-const Balance = model<IBalance>("balances", schema);
-
-export { Balance };
+model<IBalance>(Collections.BALANCES, schema);

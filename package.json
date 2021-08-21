@@ -4,8 +4,9 @@
   "description": "Server to mock a cryptocurrency bank",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec\"",
     "build": "tsoa spec-and-routes && tsc",
+    "clean": "npm cache clean --force",
+    "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec\"",
     "start": "node build/index.js"
   },
   "repository": {
